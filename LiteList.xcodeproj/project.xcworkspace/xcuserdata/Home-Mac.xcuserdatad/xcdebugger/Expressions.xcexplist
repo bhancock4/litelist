@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[XYZToDoListViewController alertView:clickedButtonAtIndex:]:XYZToDoListViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self.toDoItems count]">
+            </PersistentString>
+            <PersistentString
+               value = "self.swipeRIndex.row">
+            </PersistentString>
+            <PersistentString
+               value = "[self.toDoItems objectAtIndex:1]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "main:main.m">
+      </ContextState>
+      <ContextState
+         contextName = "+[XYZDataAccess updateToDoListItem:]:XYZDataAccess.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "objects[0]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "+[XYZDataAccess getToDoListItems:]:XYZDataAccess.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "managedObject">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XYZToDoListViewController cellWasSwiped:]:XYZToDoListViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[cell indexPathForRowAtPoint:p]">
+            </PersistentString>
+            <PersistentString
+               value = "cellIndex">
+            </PersistentString>
+            <PersistentString
+               value = "self.myTableView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
