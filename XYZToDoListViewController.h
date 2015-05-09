@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "XYZToDoItem.h"
+#import "XYZListItemTableViewCell.h"
 
 @interface XYZToDoListViewController : UITableViewController<UIAlertViewDelegate>
 
 - (NSIndexPath*)getCellIndexFromGesture:(UIGestureRecognizer *) g;
 - (void)selectedColorTableRow:(NSUInteger) colorTableRow;
+- (XYZToDoItem *) addListItem:(id)sender;
+- (IBAction)addButtonClicked:(id)sender;
 
 @end

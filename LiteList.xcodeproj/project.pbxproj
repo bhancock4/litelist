@@ -11,6 +11,7 @@
 		0D252FD519CA7A1700316990 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D252FD419CA7A1700316990 /* FPPopoverView.m */; };
 		0D252FD819CA7A6300316990 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D252FD719CA7A6300316990 /* FPTouchView.m */; };
 		0D3CE26519CBCCF900081F16 /* XYZColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3CE26419CBCCF900081F16 /* XYZColorPickerViewController.m */; };
+		0D5E4F0C1AF48F6600EEFC95 /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5E4F0B1AF48F6600EEFC95 /* ToDoItem.m */; };
 		0D60519118A7523F00D96FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60519018A7523F00D96FAA /* Foundation.framework */; };
 		0D60519318A7523F00D96FAA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60519218A7523F00D96FAA /* CoreGraphics.framework */; };
 		0D60519518A7523F00D96FAA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60519418A7523F00D96FAA /* UIKit.framework */; };
@@ -32,6 +33,10 @@
 		0D671B1418B08697000B3BE5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D671B1318B08697000B3BE5 /* CoreData.framework */; };
 		0D671B1A18B08C46000B3BE5 /* ToDoListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D671B1818B08C46000B3BE5 /* ToDoListModel.xcdatamodeld */; };
 		0D671B1D18B08ED7000B3BE5 /* XYZDataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D671B1C18B08ED7000B3BE5 /* XYZDataAccess.m */; };
+		0DAAA4C51AEB4FF2000A51D5 /* XYZListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAAA4C31AEB4FF2000A51D5 /* XYZListItemTableViewCell.m */; };
+		0DAAA4C61AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DAAA4C41AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib */; };
+		0DAAA4C81AEB50D1000A51D5 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 0DAAA4C71AEB50D1000A51D5 /* PodFile */; };
+		AAF6DBF2DB59B01AE4FFB565 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 906D92C30153D8DB3B1D4B86 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +59,8 @@
 		0D252FD919CA7AB600316990 /* ARCMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
 		0D3CE26319CBCCF900081F16 /* XYZColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZColorPickerViewController.h; sourceTree = "<group>"; };
 		0D3CE26419CBCCF900081F16 /* XYZColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZColorPickerViewController.m; sourceTree = "<group>"; };
+		0D5E4F0A1AF48F6600EEFC95 /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
+		0D5E4F0B1AF48F6600EEFC95 /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
 		0D60518D18A7523F00D96FAA /* LiteList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiteList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D60519018A7523F00D96FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D60519218A7523F00D96FAA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -85,6 +92,13 @@
 		0D671B1918B08C46000B3BE5 /* ToDoListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoListModel.xcdatamodel; sourceTree = "<group>"; };
 		0D671B1B18B08ED7000B3BE5 /* XYZDataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZDataAccess.h; sourceTree = "<group>"; };
 		0D671B1C18B08ED7000B3BE5 /* XYZDataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZDataAccess.m; sourceTree = "<group>"; };
+		0DAAA4C21AEB4FF2000A51D5 /* XYZListItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZListItemTableViewCell.h; sourceTree = "<group>"; };
+		0DAAA4C31AEB4FF2000A51D5 /* XYZListItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZListItemTableViewCell.m; sourceTree = "<group>"; };
+		0DAAA4C41AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XYZListItemTableViewCell.xib; sourceTree = "<group>"; };
+		0DAAA4C71AEB50D1000A51D5 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
+		4B40C8F901AEBE406BD2744E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		8C216901D84AEAFFFCC3761A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		906D92C30153D8DB3B1D4B86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +110,7 @@
 				0D60519318A7523F00D96FAA /* CoreGraphics.framework in Frameworks */,
 				0D60519518A7523F00D96FAA /* UIKit.framework in Frameworks */,
 				0D60519118A7523F00D96FAA /* Foundation.framework in Frameworks */,
+				AAF6DBF2DB59B01AE4FFB565 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +130,12 @@
 		0D60518418A7523F00D96FAA = {
 			isa = PBXGroup;
 			children = (
+				0D5E4F0A1AF48F6600EEFC95 /* ToDoItem.h */,
+				0D5E4F0B1AF48F6600EEFC95 /* ToDoItem.m */,
+				0DAAA4C71AEB50D1000A51D5 /* PodFile */,
+				0DAAA4C21AEB4FF2000A51D5 /* XYZListItemTableViewCell.h */,
+				0DAAA4C31AEB4FF2000A51D5 /* XYZListItemTableViewCell.m */,
+				0DAAA4C41AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib */,
 				0D62636619CD6A45001518F2 /* XYZUtilities.h */,
 				0D62636719CD6A45001518F2 /* XYZUtilities.m */,
 				0D62636319CD68A0001518F2 /* FPPopover */,
@@ -135,6 +156,7 @@
 				0D6051AF18A7523F00D96FAA /* ToDoListTests */,
 				0D60518F18A7523F00D96FAA /* Frameworks */,
 				0D60518E18A7523F00D96FAA /* Products */,
+				4680AFBEC0F2736A3BE50F8D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,6 +177,7 @@
 				0D60519218A7523F00D96FAA /* CoreGraphics.framework */,
 				0D60519418A7523F00D96FAA /* UIKit.framework */,
 				0D6051A918A7523F00D96FAA /* XCTest.framework */,
+				906D92C30153D8DB3B1D4B86 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -214,6 +237,15 @@
 			name = FPPopover;
 			sourceTree = "<group>";
 		};
+		4680AFBEC0F2736A3BE50F8D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4B40C8F901AEBE406BD2744E /* Pods.debug.xcconfig */,
+				8C216901D84AEAFFFCC3761A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -221,9 +253,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0D6051B918A7523F00D96FAA /* Build configuration list for PBXNativeTarget "ToDoList" */;
 			buildPhases = (
+				1AEAA1F47635BFDFAAC6DFDE /* Check Pods Manifest.lock */,
 				0D60518918A7523F00D96FAA /* Sources */,
 				0D60518A18A7523F00D96FAA /* Frameworks */,
 				0D60518B18A7523F00D96FAA /* Resources */,
+				7584A60EC607090EF57566AF /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -294,7 +328,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D6051C018A752BA00D96FAA /* Main.storyboard in Resources */,
+				0DAAA4C81AEB50D1000A51D5 /* PodFile in Resources */,
 				0D60519B18A7523F00D96FAA /* InfoPlist.strings in Resources */,
+				0DAAA4C61AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib in Resources */,
 				0D6051A318A7523F00D96FAA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,16 +345,51 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1AEAA1F47635BFDFAAC6DFDE /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7584A60EC607090EF57566AF /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		0D60518918A7523F00D96FAA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DAAA4C51AEB4FF2000A51D5 /* XYZListItemTableViewCell.m in Sources */,
 				0D3CE26519CBCCF900081F16 /* XYZColorPickerViewController.m in Sources */,
 				0D252FD219CA796500316990 /* FPPopoverController.m in Sources */,
 				0D252FD819CA7A6300316990 /* FPTouchView.m in Sources */,
 				0D6051A118A7523F00D96FAA /* XYZAppDelegate.m in Sources */,
 				0D62636819CD6A45001518F2 /* XYZUtilities.m in Sources */,
+				0D5E4F0C1AF48F6600EEFC95 /* ToDoItem.m in Sources */,
 				0D671B1D18B08ED7000B3BE5 /* XYZDataAccess.m in Sources */,
 				0D6051CF18A758DA00D96FAA /* XYZToDoItem.m in Sources */,
 				0D252FD519CA7A1700316990 /* FPPopoverView.m in Sources */,
@@ -442,6 +513,7 @@
 		};
 		0D6051BA18A7523F00D96FAA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4B40C8F901AEBE406BD2744E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -457,6 +529,7 @@
 		};
 		0D6051BB18A7523F00D96FAA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8C216901D84AEAFFFCC3761A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

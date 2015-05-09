@@ -17,5 +17,6 @@
     + (NSMutableArray*) getToDoListItemByCompleted: (BOOL) completed;
     + (void) updateToDoListItem: (XYZToDoItem*) updatedItem;
     + (void) deleteToDoListItem: (XYZToDoItem*) deletedItem;
-
+    + (XYZToDoItem *) insertNewItem;
++ (void) updateToDoListItem2: (XYZToDoItem*) updatedItem;
 @end

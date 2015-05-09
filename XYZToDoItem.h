@@ -7,13 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ToDoItem.h"
 
-@interface XYZToDoItem : NSObject
+@interface XYZToDoItem : ToDoItem
 
-    @property NSString* itemName;
-    @property BOOL completed;
-    @property NSDate* completedDate;
-    @property int status;
-    @property int order;
 
 @end

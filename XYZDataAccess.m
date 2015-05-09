@@ -12,6 +12,19 @@
 
 @implementation XYZDataAccess
 
++ (XYZToDoItem *) insertNewItem
+{
+    XYZAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext* context = [appDelegate managedObjectContext];
+    NSManagedObject* newToDoItem;
+    newToDoItem = [NSEntityDescription insertNewObjectForEntityForName:@"ToDoItem" inManagedObjectContext:context];
+    [newToDoItem setValue:@"" forKey:@"itemName"];
+    [newToDoItem setValue: NO forKey:@"completed"];
+    NSError* error;
+    [context save:&error];
+    return (XYZToDoItem *)newToDoItem;
+}
+
 + (BOOL) insertToDoListItem: (XYZToDoItem*) item
 {
     BOOL success = YES;
@@ -38,11 +51,32 @@
 {
     XYZAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext* context = [appDelegate managedObjectContext];
-    NSPredicate* predicate = [NSPredicate predicateWithFormat: @"(itemName = %@)", updatedItem.itemName];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat: @"(SELF = %@)", updatedItem.objectID];
     NSArray* objects = [XYZDataAccess fetchObjects: predicate];
     if(objects.count == 1)
     {
-        [objects[0] setValue: [NSNumber numberWithBool:updatedItem.completed] forKey:@"completed"];
+        BOOL completed = updatedItem.completed;
+        [objects[0] setValue: updatedItem.itemName forKey:@"itemName"];
+        [objects[0] setValue: [NSNumber numberWithBool:completed] forKey:@"completed"];
+        [objects[0] setValue: updatedItem.completedDate forKey:@"completedDate"];
+        [objects[0] setValue: [NSNumber numberWithInt:updatedItem.status] forKey:@"status"];
+        [objects[0] setValue: [NSNumber numberWithInt:updatedItem.order] forKey:@"order"];
+    }
+    NSError* error;
+    [context save: &error];
+}
+
++ (void) updateToDoListItem2: (XYZToDoItem*) updatedItem
+{
+    XYZAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext* context = [appDelegate managedObjectContext];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat: @"(SELF = %@)", updatedItem.objectID];
+    NSArray* objects = [XYZDataAccess fetchObjects: predicate];
+    if(objects.count == 1)
+    {
+        BOOL completed = updatedItem.completed;
+        [objects[0] setValue: updatedItem.itemName forKey:@"itemName"];
+        //[objects[0] setValue: [NSNumber numberWithBool:completed] forKey:@"completed"];
         [objects[0] setValue: updatedItem.completedDate forKey:@"completedDate"];
         [objects[0] setValue: [NSNumber numberWithInt:updatedItem.status] forKey:@"status"];
         [objects[0] setValue: [NSNumber numberWithInt:updatedItem.order] forKey:@"order"];
@@ -55,7 +89,7 @@
 {
     XYZAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext* context = [appDelegate managedObjectContext];
-    NSArray* deletedToDoItemArray = [XYZDataAccess fetchObjects: [NSPredicate predicateWithFormat: @"(itemName = %@)", deletedItem.itemName]];
+    NSArray* deletedToDoItemArray = [XYZDataAccess fetchObjects: [NSPredicate predicateWithFormat: @"(itemName = %@ and completed = %@)", deletedItem.itemName, [NSNumber numberWithBool:NO]]];
     if(deletedToDoItemArray.count == 1)
     {
         [context deleteObject: deletedToDoItemArray[0]];
@@ -66,7 +100,7 @@
 
 + (BOOL) isDuplicateEntry: (XYZToDoItem*) testItem
 {
-    return [XYZDataAccess fetchObjects: [NSPredicate predicateWithFormat: @"(itemName = %@)", testItem.itemName]].count > 0;
+    return [XYZDataAccess fetchObjects: [NSPredicate predicateWithFormat: @"(itemName = %@ and completed = %@)", testItem.itemName, [NSNumber numberWithBool:NO]]].count > 0;
 }
 
 + (NSArray*) fetchObjects: (NSPredicate*) predicate
@@ -93,13 +127,13 @@
     for(int i = 0; i < objects.count; i++)
     {
         NSManagedObject* managedObject = objects[i];
-        XYZToDoItem* toDoItem = [XYZToDoItem new];
-        toDoItem.itemName = [managedObject valueForKey: @"itemName"];
-        toDoItem.completed = [[managedObject valueForKey: @"completed"] boolValue];
-        toDoItem.completedDate = [managedObject valueForKey: @"completedDate"];
-        toDoItem.status = [[managedObject valueForKey: @"status"] intValue];
-        toDoItem.order = [[managedObject valueForKey: @"order"] intValue];
-        [toDoItems addObject: toDoItem];
+        //XYZToDoItem* toDoItem = [XYZToDoItem new];
+        ((XYZToDoItem *)objects[i]).itemName = [managedObject valueForKey: @"itemName"];
+        ((XYZToDoItem *)objects[i]).completed = ((ToDoItem *)objects[i]).completed; // [[managedObject valueForKey: @"completed"] boolValue];
+        ((XYZToDoItem *)objects[i]).completedDate = [managedObject valueForKey: @"completedDate"];
+        ((XYZToDoItem *)objects[i]).status = ((ToDoItem *)objects[i]).status; //[[managedObject valueForKey: @"status"] intValue];
+        ((XYZToDoItem *)objects[i]).order = ((ToDoItem *)objects[i]).order; //[[managedObject valueForKey: @"order"] intValue];
+        [toDoItems addObject: ((XYZToDoItem *)objects[i])];
     }
     return toDoItems;
 }

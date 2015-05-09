@@ -26,7 +26,7 @@
 
 @implementation XYZToDoListViewController
 
-- (IBAction)unwindToList:(UIStoryboardSegue *)segue
+/*- (IBAction)unwindToList:(UIStoryboardSegue *)segue
 {
     XYZAddToDoItemViewController* source = [segue sourceViewController];
     XYZToDoItem* item = source.toDoItem;
@@ -38,7 +38,7 @@
         self.toDoItems = [XYZDataAccess getToDoListItemByCompleted:NO];
         [self.tableView reloadData];
     }
-}
+}*/
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -53,6 +53,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.tableView registerNib:[UINib nibWithNibName: @"XYZListItemTableViewCell"
+                                               bundle: [NSBundle mainBundle]]
+         forCellReuseIdentifier: @"XYZListItemTableViewCell"];
     
     self.toDoItems = [XYZDataAccess getToDoListItemByCompleted:NO];
     self.tableView.editing = YES;  //edit mode allows reordering
@@ -99,19 +103,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [self.toDoItems count] + 1;
+    return [self.toDoItems count]; // + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"ListPrototypeCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"XYZListItemTableViewCell";
+    XYZListItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     if(indexPath.row < [self.toDoItems count])
     {
         // Configure the cell
         XYZToDoItem* toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
+        cell.item = toDoItem;
         cell.textLabel.text = toDoItem.itemName;
         cell.backgroundColor = [XYZUtilities getCellColorFromStatus:toDoItem.status];
 
@@ -122,10 +126,10 @@
         [cell addGestureRecognizer:swipeR];
         
         //add a left-swipe gesture to move to completed
-        UISwipeGestureRecognizer* swipeL;
+        /*UISwipeGestureRecognizer* swipeL;
         swipeL = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(cellWasSwipedLeft: )];
         swipeL.direction = UISwipeGestureRecognizerDirectionLeft;
-        [cell addGestureRecognizer:swipeL];
+        [cell addGestureRecognizer:swipeL];*/
     
         //add a long press gesture to pick status
         UILongPressGestureRecognizer* longPress;
@@ -138,10 +142,43 @@
         cell.textLabel.text = @"";
         cell.backgroundColor = [UIColor whiteColor];
     }
+    
+    UIView *crossView = [self viewWithImageName:@"RedXDelete"];
+    UIColor *redColor = [UIColor colorWithRed:232.0 / 255.0 green:61.0 / 255.0 blue:14.0 / 255.0 alpha:1.0];
+    
+    [cell setSwipeGestureWithView:crossView
+                            color:redColor
+                             mode:MCSwipeTableViewCellModeExit
+                            state:MCSwipeTableViewCellState3
+                  completionBlock:^(MCSwipeTableViewCell* cell, MCSwipeTableViewCellState state, MCSwipeTableViewCellMode mode)
+     {
+         [self deleteItemForCell:(XYZListItemTableViewCell *)cell];
+     }];
+    
+    cell.firstTrigger = 0.35;
+    cell.secondTrigger = 0.65;
+    
     return cell;
 }
 
-- (void)cellWasSwipedRight:(UIGestureRecognizer *)g
+- (void) deleteItemForCell: (XYZListItemTableViewCell *) cell
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    [XYZDataAccess deleteToDoListItem: [self.toDoItems objectAtIndex:indexPath.row]];
+    [self.toDoItems removeObjectAtIndex:indexPath.row];
+    // Delete the row from the data source
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+}
+
+
+- (UIView *)viewWithImageName:(NSString *)imageName {
+    UIImage *image = [UIImage imageNamed:imageName];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    imageView.contentMode = UIViewContentModeCenter;
+    return imageView;
+}
+
+/*- (void)cellWasSwipedRight:(UIGestureRecognizer *)g
 {
     NSIndexPath* cellIndex = [self getCellIndexFromGesture: g];
     self.swipeRIndex = cellIndex;
@@ -156,7 +193,7 @@
                                            otherButtonTitles:@"OK", nil];
     
     [alert show];
-}
+}*/
 
 //handle result of user interaction with delete confirm dialog
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -180,14 +217,14 @@
             for(int i = (int)self.swipeRIndex.row; i <= [self.toDoItems count] - 1; i++)
             {
                 XYZToDoItem* item = [self.toDoItems objectAtIndex:i];
-                item.order = i;
+                item.order = [NSNumber numberWithInt:i];
                 [XYZDataAccess updateToDoListItem: item];
             }
         }
     }
 }
 
-- (void)cellWasSwipedLeft:(UIGestureRecognizer *)g
+- (void)cellWasSwipedRight:(UIGestureRecognizer *)g
 {
     NSIndexPath* cellIndex = [self getCellIndexFromGesture: g];
     UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:cellIndex];
@@ -197,7 +234,7 @@
     {
         [self.tableView deselectRowAtIndexPath:cellIndex animated:NO];
         XYZToDoItem* tappedItem = [self.toDoItems objectAtIndex:cellIndex.row];
-        tappedItem.completed = YES;
+        tappedItem.completed = [NSNumber numberWithBool:YES];
         tappedItem.completedDate = [NSDate date];
         [XYZDataAccess updateToDoListItem: tappedItem];
         [self.toDoItems removeObjectAtIndex:cellIndex.row];
@@ -257,7 +294,7 @@
     for(int i = 0; i < [self.toDoItems count]; i++)
     {
         XYZToDoItem* item = [self.toDoItems objectAtIndex:i];
-        item.order = i;
+        item.order = [NSNumber numberWithInt:i];
         [XYZDataAccess updateToDoListItem: item];
     }
 }
@@ -282,7 +319,7 @@
     cell.backgroundColor = [XYZUtilities getCellColorFromStatus:(int)colorRowNum];
 
     XYZToDoItem* item = [self.toDoItems objectAtIndex:self.longPressIndex.row];
-    item.status = (int)colorRowNum;
+    item.status = [NSNumber numberWithInt:colorRowNum];
     [XYZDataAccess updateToDoListItem: item];
 
     [self.colorPickerPopover dismissPopoverAnimated:YES];
@@ -296,10 +333,38 @@
     {
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
-    else //segue to the add item view for taps on the dummy row
+    else
     {
-        [self performSegueWithIdentifier:@"showAddItem" sender:self];
+        //XYZToDoItem* item = [self addListItem:self];
+        //[self.tableView insertObject:item atIndex:0];
+        //((XYZListItemTableViewCell *)([self.tableView cellForRowAtIndexPath:indexPath])).item = item;
     }
+}
+- (IBAction)addButtonClicked:(id)sender
+{
+    XYZToDoItem *item = [self addListItem:self];
+    //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.toDoItems indexOfObject:item] inSection:0];
+    self.toDoItems = [XYZDataAccess getToDoListItemByCompleted:NO];
+    [self.tableView reloadData];
+    //XYZListItemTableViewCell * cell = (XYZListItemTableViewCell *)[self.tableView cellForRowAtIndex:indexPath];
+    //cell.item = item;
+    
+}
+
+- (XYZToDoItem *) addListItem:(id)sender
+{
+    XYZToDoItem* item = [XYZDataAccess insertNewItem];
+    //item.itemName = @"";
+    item.order = [NSNumber numberWithInt:[self.toDoItems count]];
+    [XYZDataAccess updateToDoListItem:item];
+    [self.toDoItems addObject:item];
+    /*if(![XYZDataAccess insertToDoListItem:item])
+    {
+        UIAlertView* alert = [[UIAlertView alloc]
+                                  initWithTitle:@"Duplicate Item" message: @"A ToDoList item with that name already exists.  Please select a different name." delegate:nil cancelButtonTitle: @"Ok" otherButtonTitles:nil];
+        [alert show];
+    }*/
+    return item;
 }
 
 @end
