@@ -28,7 +28,7 @@
 + (BOOL) insertToDoListItem: (XYZToDoItem*) item
 {
     BOOL success = YES;
-    if([XYZDataAccess isDuplicateEntry: item])
+    /*if([XYZDataAccess isDuplicateEntry: item])
         success = NO;
     else
     {
@@ -43,13 +43,13 @@
         [newToDoItem setValue: [NSNumber numberWithInt:item.order] forKey:@"order"];
         NSError* error;
         [context save:&error];
-    }
+    }*/
     return success;
 }
 
 + (void) updateToDoListItem: (XYZToDoItem*) updatedItem
 {
-    XYZAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+   /* XYZAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext* context = [appDelegate managedObjectContext];
     NSPredicate* predicate = [NSPredicate predicateWithFormat: @"(SELF = %@)", updatedItem.objectID];
     NSArray* objects = [XYZDataAccess fetchObjects: predicate];
@@ -63,12 +63,12 @@
         [objects[0] setValue: [NSNumber numberWithInt:updatedItem.order] forKey:@"order"];
     }
     NSError* error;
-    [context save: &error];
+    [context save: &error];*/
 }
 
 + (void) updateToDoListItem2: (XYZToDoItem*) updatedItem
 {
-    XYZAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
+   /* XYZAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext* context = [appDelegate managedObjectContext];
     NSPredicate* predicate = [NSPredicate predicateWithFormat: @"(SELF = %@)", updatedItem.objectID];
     NSArray* objects = [XYZDataAccess fetchObjects: predicate];
@@ -82,7 +82,7 @@
         [objects[0] setValue: [NSNumber numberWithInt:updatedItem.order] forKey:@"order"];
     }
     NSError* error;
-    [context save: &error];
+    [context save: &error];*/
 }
 
 + (void) deleteToDoListItem: (XYZToDoItem*) deletedItem
@@ -124,7 +124,7 @@
 {
     NSArray* objects = [XYZDataAccess fetchObjects: predicate];
     NSMutableArray* toDoItems = [NSMutableArray new];
-    for(int i = 0; i < objects.count; i++)
+    /*for(int i = 0; i < objects.count; i++)
     {
         NSManagedObject* managedObject = objects[i];
         //XYZToDoItem* toDoItem = [XYZToDoItem new];
@@ -134,7 +134,7 @@
         ((XYZToDoItem *)objects[i]).status = ((ToDoItem *)objects[i]).status; //[[managedObject valueForKey: @"status"] intValue];
         ((XYZToDoItem *)objects[i]).order = ((ToDoItem *)objects[i]).order; //[[managedObject valueForKey: @"order"] intValue];
         [toDoItems addObject: ((XYZToDoItem *)objects[i])];
-    }
+    }*/
     return toDoItems;
 }
 

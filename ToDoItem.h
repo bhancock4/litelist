@@ -2,20 +2,21 @@
 //  ToDoItem.h
 //  LiteList
 //
-//  Created by Benjamin Hancock on 5/1/15.
+//  Created by Benjamin Hancock on 5/15/15.
 //  Copyright (c) 2015 Benjamin Hancock. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "BaseEntity.h"
 
 
-@interface ToDoItem : NSManagedObject
+@interface ToDoItem : BaseEntity
 
-@property (nonatomic, retain) NSNumber * completed;
-@property (nonatomic, retain) NSDate * completedDate;
+@property (nonatomic) BOOL completed;
+@property (nonatomic) NSTimeInterval completedDate;
 @property (nonatomic, retain) NSString * itemName;
-@property (nonatomic, retain) NSNumber * order;
-@property (nonatomic, retain) NSNumber * status;
+@property (nonatomic) int16_t order;
+@property (nonatomic) int16_t status;
 
 @end

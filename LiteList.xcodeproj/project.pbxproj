@@ -11,7 +11,6 @@
 		0D252FD519CA7A1700316990 /* FPPopoverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D252FD419CA7A1700316990 /* FPPopoverView.m */; };
 		0D252FD819CA7A6300316990 /* FPTouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D252FD719CA7A6300316990 /* FPTouchView.m */; };
 		0D3CE26519CBCCF900081F16 /* XYZColorPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D3CE26419CBCCF900081F16 /* XYZColorPickerViewController.m */; };
-		0D5E4F0C1AF48F6600EEFC95 /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D5E4F0B1AF48F6600EEFC95 /* ToDoItem.m */; };
 		0D60519118A7523F00D96FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60519018A7523F00D96FAA /* Foundation.framework */; };
 		0D60519318A7523F00D96FAA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60519218A7523F00D96FAA /* CoreGraphics.framework */; };
 		0D60519518A7523F00D96FAA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60519418A7523F00D96FAA /* UIKit.framework */; };
@@ -30,6 +29,9 @@
 		0D6051CF18A758DA00D96FAA /* XYZToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6051CE18A758DA00D96FAA /* XYZToDoItem.m */; };
 		0D6051D218A7642D00D96FAA /* XYZCompletedItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6051D118A7642D00D96FAA /* XYZCompletedItemsViewController.m */; };
 		0D62636819CD6A45001518F2 /* XYZUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62636719CD6A45001518F2 /* XYZUtilities.m */; };
+		0D62AFAB1B06FA5300158B9A /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AFAA1B06FA5300158B9A /* DataAccess.m */; };
+		0D62AFAE1B06FB7F00158B9A /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AFAD1B06FB7F00158B9A /* BaseEntity.m */; };
+		0D62AFB11B06FF2900158B9A /* ToDoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AFB01B06FF2900158B9A /* ToDoItem.m */; };
 		0D671B1418B08697000B3BE5 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D671B1318B08697000B3BE5 /* CoreData.framework */; };
 		0D671B1A18B08C46000B3BE5 /* ToDoListModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0D671B1818B08C46000B3BE5 /* ToDoListModel.xcdatamodeld */; };
 		0D671B1D18B08ED7000B3BE5 /* XYZDataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D671B1C18B08ED7000B3BE5 /* XYZDataAccess.m */; };
@@ -59,8 +61,6 @@
 		0D252FD919CA7AB600316990 /* ARCMacros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ARCMacros.h; sourceTree = "<group>"; };
 		0D3CE26319CBCCF900081F16 /* XYZColorPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZColorPickerViewController.h; sourceTree = "<group>"; };
 		0D3CE26419CBCCF900081F16 /* XYZColorPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZColorPickerViewController.m; sourceTree = "<group>"; };
-		0D5E4F0A1AF48F6600EEFC95 /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
-		0D5E4F0B1AF48F6600EEFC95 /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
 		0D60518D18A7523F00D96FAA /* LiteList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiteList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D60519018A7523F00D96FAA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0D60519218A7523F00D96FAA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -88,6 +88,12 @@
 		0D6051D118A7642D00D96FAA /* XYZCompletedItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZCompletedItemsViewController.m; sourceTree = "<group>"; };
 		0D62636619CD6A45001518F2 /* XYZUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZUtilities.h; sourceTree = "<group>"; };
 		0D62636719CD6A45001518F2 /* XYZUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZUtilities.m; sourceTree = "<group>"; };
+		0D62AFA91B06FA5300158B9A /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccess.h; sourceTree = "<group>"; };
+		0D62AFAA1B06FA5300158B9A /* DataAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataAccess.m; sourceTree = "<group>"; };
+		0D62AFAC1B06FB7F00158B9A /* BaseEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEntity.h; sourceTree = "<group>"; };
+		0D62AFAD1B06FB7F00158B9A /* BaseEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEntity.m; sourceTree = "<group>"; };
+		0D62AFAF1B06FF2900158B9A /* ToDoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoItem.h; sourceTree = "<group>"; };
+		0D62AFB01B06FF2900158B9A /* ToDoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoItem.m; sourceTree = "<group>"; };
 		0D671B1318B08697000B3BE5 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0D671B1918B08C46000B3BE5 /* ToDoListModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoListModel.xcdatamodel; sourceTree = "<group>"; };
 		0D671B1B18B08ED7000B3BE5 /* XYZDataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZDataAccess.h; sourceTree = "<group>"; };
@@ -130,8 +136,12 @@
 		0D60518418A7523F00D96FAA = {
 			isa = PBXGroup;
 			children = (
-				0D5E4F0A1AF48F6600EEFC95 /* ToDoItem.h */,
-				0D5E4F0B1AF48F6600EEFC95 /* ToDoItem.m */,
+				0D62AFAF1B06FF2900158B9A /* ToDoItem.h */,
+				0D62AFB01B06FF2900158B9A /* ToDoItem.m */,
+				0D62AFAC1B06FB7F00158B9A /* BaseEntity.h */,
+				0D62AFAD1B06FB7F00158B9A /* BaseEntity.m */,
+				0D62AFA91B06FA5300158B9A /* DataAccess.h */,
+				0D62AFAA1B06FA5300158B9A /* DataAccess.m */,
 				0DAAA4C71AEB50D1000A51D5 /* PodFile */,
 				0DAAA4C21AEB4FF2000A51D5 /* XYZListItemTableViewCell.h */,
 				0DAAA4C31AEB4FF2000A51D5 /* XYZListItemTableViewCell.m */,
@@ -386,15 +396,17 @@
 				0DAAA4C51AEB4FF2000A51D5 /* XYZListItemTableViewCell.m in Sources */,
 				0D3CE26519CBCCF900081F16 /* XYZColorPickerViewController.m in Sources */,
 				0D252FD219CA796500316990 /* FPPopoverController.m in Sources */,
+				0D62AFAB1B06FA5300158B9A /* DataAccess.m in Sources */,
 				0D252FD819CA7A6300316990 /* FPTouchView.m in Sources */,
 				0D6051A118A7523F00D96FAA /* XYZAppDelegate.m in Sources */,
+				0D62AFAE1B06FB7F00158B9A /* BaseEntity.m in Sources */,
 				0D62636819CD6A45001518F2 /* XYZUtilities.m in Sources */,
-				0D5E4F0C1AF48F6600EEFC95 /* ToDoItem.m in Sources */,
 				0D671B1D18B08ED7000B3BE5 /* XYZDataAccess.m in Sources */,
 				0D6051CF18A758DA00D96FAA /* XYZToDoItem.m in Sources */,
 				0D252FD519CA7A1700316990 /* FPPopoverView.m in Sources */,
 				0D60519D18A7523F00D96FAA /* main.m in Sources */,
 				0D6051D218A7642D00D96FAA /* XYZCompletedItemsViewController.m in Sources */,
+				0D62AFB11B06FF2900158B9A /* ToDoItem.m in Sources */,
 				0D6051CC18A7578800D96FAA /* XYZToDoListViewController.m in Sources */,
 				0D6051C318A7561400D96FAA /* XYZAddToDoItemViewController.m in Sources */,
 				0D671B1A18B08C46000B3BE5 /* ToDoListModel.xcdatamodeld in Sources */,

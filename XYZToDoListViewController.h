@@ -14,7 +14,8 @@
 
 - (NSIndexPath*)getCellIndexFromGesture:(UIGestureRecognizer *) g;
 - (void)selectedColorTableRow:(NSUInteger) colorTableRow;
-- (XYZToDoItem *) addListItem:(id)sender;
+- (ToDoItem *) addListItem:(id)sender;
 - (IBAction)addButtonClicked:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 
 @end

@@ -50,6 +50,39 @@
     return self;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(cellTextFieldEndedEditing)
+                                                 name: UITextFieldTextDidEndEditingNotification
+                                               object: nil];
+    
+    /*[[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(cellTextFieldEndedEditing)
+                                                 name: UITextFieldTextDidEndEditingNotification
+                                               object: nil];
+    
+    ShoppingList* shoppingList = [ShoppingList getEntityByName:@"ShoppingList"];
+    if(shoppingList == nil)
+    {
+        shoppingList = [ShoppingList newEntity];
+        shoppingList.name = @"ShoppingList";
+        [shoppingList saveEntity];
+    }
+    self.shoppingList = shoppingList;*/
+    
+    /*if(nil == self.shoppingList.shoppingListIngredients)
+        self.shoppingList.shoppingListIngredients = [NSOrderedSet new];
+    
+    self.shoppingListIngredients = [NSMutableArray arrayWithArray: [self.shoppingList.shoppingListIngredients array]];*/
+    
+    self.toDoItems = [NSMutableArray arrayWithArray:[ToDoItem getEntities]];
+    
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -58,7 +91,7 @@
                                                bundle: [NSBundle mainBundle]]
          forCellReuseIdentifier: @"XYZListItemTableViewCell"];
     
-    self.toDoItems = [XYZDataAccess getToDoListItemByCompleted:NO];
+    //self.toDoItems = [XYZDataAccess getToDoListItemByCompleted:NO];
     self.tableView.editing = YES;  //edit mode allows reordering
     self.tableView.allowsSelectionDuringEditing = YES;  //still allow cell selection
 }
@@ -114,9 +147,13 @@
     if(indexPath.row < [self.toDoItems count])
     {
         // Configure the cell
-        XYZToDoItem* toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
+        ToDoItem* toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
         cell.item = toDoItem;
-        cell.textLabel.text = toDoItem.itemName;
+        
+        //this somehow forces the entity to retrieve its values...dumb
+        toDoItem.order;
+        cell.listItemTextField.text = toDoItem.itemName;
+        //cell.textLabel.text = toDoItem.itemName;
         cell.backgroundColor = [XYZUtilities getCellColorFromStatus:toDoItem.status];
 
         //add a right-swipe gesture to move to delete
@@ -164,7 +201,13 @@
 - (void) deleteItemForCell: (XYZListItemTableViewCell *) cell
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    [XYZDataAccess deleteToDoListItem: [self.toDoItems objectAtIndex:indexPath.row]];
+    //[XYZDataAccess deleteToDoListItem: [self.toDoItems objectAtIndex:indexPath.row]];
+    //[self.toDoItems removeObjectAtIndex:indexPath.row];
+    // Delete the row from the data source
+    //[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    ToDoItem* toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
+    [ToDoItem deleteEntity:toDoItem];
     [self.toDoItems removeObjectAtIndex:indexPath.row];
     // Delete the row from the data source
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -217,7 +260,7 @@
             for(int i = (int)self.swipeRIndex.row; i <= [self.toDoItems count] - 1; i++)
             {
                 XYZToDoItem* item = [self.toDoItems objectAtIndex:i];
-                item.order = [NSNumber numberWithInt:i];
+                item.order = i;
                 [XYZDataAccess updateToDoListItem: item];
             }
         }
@@ -235,8 +278,9 @@
         [self.tableView deselectRowAtIndexPath:cellIndex animated:NO];
         XYZToDoItem* tappedItem = [self.toDoItems objectAtIndex:cellIndex.row];
         tappedItem.completed = [NSNumber numberWithBool:YES];
-        tappedItem.completedDate = [NSDate date];
-        [XYZDataAccess updateToDoListItem: tappedItem];
+        //tappedItem.completedDate = [NSDate date];
+        [tappedItem saveEntity];
+        //[XYZDataAccess updateToDoListItem: tappedItem];
         [self.toDoItems removeObjectAtIndex:cellIndex.row];
         [self.tableView deleteRowsAtIndexPaths:@[cellIndex] withRowAnimation:UITableViewRowAnimationLeft];
     }
@@ -278,7 +322,8 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete)
     {
-        [XYZDataAccess deleteToDoListItem: [self.toDoItems objectAtIndex:indexPath.row]];
+        ToDoItem* toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
+        [ToDoItem deleteEntity:toDoItem];
         [self.toDoItems removeObjectAtIndex:indexPath.row];
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -294,8 +339,9 @@
     for(int i = 0; i < [self.toDoItems count]; i++)
     {
         XYZToDoItem* item = [self.toDoItems objectAtIndex:i];
-        item.order = [NSNumber numberWithInt:i];
-        [XYZDataAccess updateToDoListItem: item];
+        item.order = i;
+        [item saveEntity];
+       // [XYZDataAccess updateToDoListItem: item];
     }
 }
 
@@ -320,7 +366,8 @@
 
     XYZToDoItem* item = [self.toDoItems objectAtIndex:self.longPressIndex.row];
     item.status = [NSNumber numberWithInt:colorRowNum];
-    [XYZDataAccess updateToDoListItem: item];
+    [item saveEntity];
+  //  [XYZDataAccess updateToDoListItem: item];
 
     [self.colorPickerPopover dismissPopoverAnimated:YES];
 }
@@ -340,7 +387,7 @@
         //((XYZListItemTableViewCell *)([self.tableView cellForRowAtIndexPath:indexPath])).item = item;
     }
 }
-- (IBAction)addButtonClicked:(id)sender
+- (IBAction)addButtonClicked2:(id)sender
 {
     XYZToDoItem *item = [self addListItem:self];
     //NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.toDoItems indexOfObject:item] inSection:0];
@@ -351,11 +398,32 @@
     
 }
 
-- (XYZToDoItem *) addListItem:(id)sender
+- (IBAction)addButtonClicked:(id)sender
+{
+    //instantiate a new ingredient entity
+    ToDoItem* toDoItem = [ToDoItem newEntity];
+    
+    toDoItem.order = 0;
+    for(int i = 0; i < self.toDoItems.count; i++)
+    {
+        ++((ToDoItem *)self.toDoItems[i]).order;
+        //++((ToDoItem *)self.toDoItems[i]).order;
+    }
+    
+    //insert the new ingredient at the TOP of the table by putting it at the beginning of our local array
+    [self.toDoItems insertObject:toDoItem atIndex:0];
+    
+    //create in indexpath from the local array and use that to insert into the table
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[self.toDoItems indexOfObject:toDoItem] inSection:0];
+    [self.tableView
+     insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+}
+
+- (ToDoItem *) addListItem:(id)sender
 {
     XYZToDoItem* item = [XYZDataAccess insertNewItem];
     //item.itemName = @"";
-    item.order = [NSNumber numberWithInt:[self.toDoItems count]];
+    item.order = [self.toDoItems count];
     [XYZDataAccess updateToDoListItem:item];
     [self.toDoItems addObject:item];
     /*if(![XYZDataAccess insertToDoListItem:item])
@@ -365,6 +433,24 @@
         [alert show];
     }*/
     return item;
+}
+
+//save state of shoppig list whenever a cell is edited
+- (void)cellTextFieldEndedEditing
+{
+    //begin weird hack -> last ingredient name not persisting so we add/delete a bogus entry to force save
+    //[self addButtonClicked: self.addButton];
+    //[self.toDoItems removeObjectAtIndex: 0];
+    //NSIndexPath *indexPath = [NSIndexPath indexPathForRow: 0 inSection:0];
+    //[self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    //...end weird hack
+    
+    //self.shoppingList.shoppingListIngredients = [NSOrderedSet orderedSetWithArray: self.shoppingListIngredients];
+    //[self.shoppingList saveEntity];
+    for(ToDoItem* toDoItem in self.toDoItems)
+    {
+        [toDoItem saveEntity];
+    }
 }
 
 @end

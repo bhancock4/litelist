@@ -72,13 +72,13 @@
     //format the current time
     NSDateFormatter* dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm"];
-    NSString* completedDateString = [@"Completed on " stringByAppendingString:[dateFormatter stringFromDate:toDoItem.completedDate]];
+    //NSString* completedDateString = [@"Completed on " stringByAppendingString:[dateFormatter stringFromDate:toDoItem.completedDate]];
     
     //set the cell text
     NSMutableString* msCellText = [NSMutableString new];
     [msCellText appendString:completedItemName];
     cell.textLabel.text = msCellText;
-    cell.detailTextLabel.text = completedDateString;
+    cell.detailTextLabel.text = @"test text"; //completedDateString;
     
     return cell;
 }

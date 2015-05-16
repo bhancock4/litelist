@@ -74,8 +74,9 @@
 
 - (void) setEntityValueFromTextField:(UITextField *) textField
 {
+    self.item.order = self.item.order;
     self.item.itemName = textField.text;
-    [XYZDataAccess updateToDoListItem2:self.item];
+    //[XYZDataAccess updateToDoListItem2:self.item];
 }
 
 

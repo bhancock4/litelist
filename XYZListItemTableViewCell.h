@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MCSwipeTableViewCell.h"
-#import "XYZToDoItem.h"
+#import "ToDoItem.h"
 
 @interface XYZListItemTableViewCell : MCSwipeTableViewCell <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *listItemTextField;
-@property XYZToDoItem *item;
+@property ToDoItem *item;
 
 @end
