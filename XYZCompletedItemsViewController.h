@@ -10,4 +10,6 @@
 
 @interface XYZCompletedItemsViewController : UITableViewController
 
+    @property NSMutableArray* toDoItems;
+
 @end

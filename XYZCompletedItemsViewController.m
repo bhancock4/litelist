@@ -8,13 +8,7 @@
 
 #import "XYZCompletedItemsViewController.h"
 #import "XYZAppDelegate.h"
-#import "XYZToDoItem.h"
-
-@interface XYZCompletedItemsViewController ()
-
-    @property NSMutableArray* toDoItems;
-
-@end
+#import "ToDoItem.h"
 
 @implementation XYZCompletedItemsViewController
 
@@ -32,7 +26,7 @@
 {
     [super viewDidLoad];
     
-    self.toDoItems = [XYZDataAccess getToDoListItemByCompleted: YES];
+    self.toDoItems = [NSMutableArray arrayWithArray:[ToDoItem getToDoListItemByCompleted:YES]];
     [self.tableView reloadData];
 
     self.navigationItem.rightBarButtonItem = nil;
@@ -64,7 +58,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     // Configure the cell...
-    XYZToDoItem* toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
+    ToDoItem* toDoItem = [self.toDoItems objectAtIndex:indexPath.row];
     
     //get the toDo item name
     NSString* completedItemName = toDoItem.itemName;
@@ -72,13 +66,13 @@
     //format the current time
     NSDateFormatter* dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm"];
-    //NSString* completedDateString = [@"Completed on " stringByAppendingString:[dateFormatter stringFromDate:toDoItem.completedDate]];
+    NSString* completedDateString = [@"Completed on " stringByAppendingString:[dateFormatter stringFromDate:toDoItem.completedDate]];
     
     //set the cell text
     NSMutableString* msCellText = [NSMutableString new];
     [msCellText appendString:completedItemName];
     cell.textLabel.text = msCellText;
-    cell.detailTextLabel.text = @"test text"; //completedDateString;
+    cell.detailTextLabel.text = completedDateString;
     
     return cell;
 }
@@ -88,18 +82,6 @@
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
-}
-
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        [XYZDataAccess deleteToDoListItem: [self.toDoItems objectAtIndex:indexPath.row]];
-        [self.toDoItems removeObjectAtIndex:indexPath.row];
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
 }
 
 #pragma mark - Table view delegate

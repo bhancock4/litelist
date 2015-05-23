@@ -18,6 +18,7 @@
 + (id) getEntityByName: (NSString *) name;
 + (void) deleteEntity: (BaseEntity *) deletedEntity;
 + (NSArray *) getEntitiesWithSortProperty: (NSString *) sortProperty;
++ (NSArray*) getToDoListItemByCompleted: (BOOL) completed;
 
 @property (nonatomic, retain) NSString* itemName;
 

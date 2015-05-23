@@ -31,7 +31,7 @@
 
 - (void)dealloc
 {
-    //
+    //dealloc
 }
 
 - (NSArray *) getEntitiesByName: (NSString *) entityName
@@ -70,15 +70,11 @@
 {
     XYZAppDelegate* appDelegate = [[UIApplication sharedApplication] delegate];
     NSManagedObjectContext* context = [appDelegate managedObjectContext];
-    //[self getEntitiesByValue:entityName WithPredicate:predicate AndSortByProperty:nil]
-    NSArray* deletedEntityArray = [self getEntitiesByName: NSStringFromClass([deletedEntity class]) WithPredicate: [NSPredicate predicateWithFormat: @"(name = %@)", deletedEntity.itemName] AndSortByProperty: nil];
     
-    if(deletedEntityArray.count == 1)
-    {
-        [context deleteObject: deletedEntityArray[0]];
-        NSError* error;
-        [context save:&error];
-    }
+    [context deleteObject: deletedEntity];
+    NSError* error;
+    [context save:&error];
 }
+
 
 @end

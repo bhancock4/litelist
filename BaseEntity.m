@@ -14,8 +14,7 @@
 
 + (NSArray *) getEntities
 {
-    DataAccess* da = [DataAccess sharedDataAccess];
-    return [da getEntitiesByName: NSStringFromClass([self class])];
+    return [self getEntitiesWithSortProperty:@"order"];
 }
 
 + (NSArray *) getEntitiesWithSortProperty: (NSString *) sortProperty
@@ -46,6 +45,14 @@
 {
     DataAccess* da = [DataAccess sharedDataAccess];
     [da deleteEntity:deletedEntity];
+}
+
++ (NSArray*) getToDoListItemByCompleted: (BOOL) completed
+{
+    DataAccess* da = [DataAccess sharedDataAccess];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat: @"(completed == %@)", [NSNumber numberWithBool:completed]];
+    
+    return [da getEntitiesByName: NSStringFromClass([self class]) WithPredicate: predicate AndSortByProperty: @"order"];
 }
 
 - (BOOL) validateEntity

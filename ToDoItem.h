@@ -10,13 +10,14 @@
 #import <CoreData/CoreData.h>
 #import "BaseEntity.h"
 
-
 @interface ToDoItem : BaseEntity
 
 @property (nonatomic) BOOL completed;
-@property (nonatomic) NSTimeInterval completedDate;
+@property (nonatomic) NSDate* completedDate;
 @property (nonatomic, retain) NSString * itemName;
 @property (nonatomic) int16_t order;
 @property (nonatomic) int16_t status;
+
++ (ToDoItem *) insertNewItem;
 
 @end

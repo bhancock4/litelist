@@ -19,7 +19,7 @@
 + (id)sharedDataAccess;
 - (NSArray *) getEntitiesByName: (NSString *) entityName;
 - (NSArray *) getEntitiesByName: (NSString *) entityName WithPredicate: (NSPredicate *) predicate;
-- (NSArray*) getEntitiesByName: (NSString *) entityName WithPredicate: (NSPredicate *) predicate AndSortByProperty: (NSString *) sortProperty;
+- (NSArray *) getEntitiesByName: (NSString *) entityName WithPredicate: (NSPredicate *) predicate AndSortByProperty: (NSString *) sortProperty;
 - (void) deleteEntity: (BaseEntity *) deletedEntity;
 
 @end

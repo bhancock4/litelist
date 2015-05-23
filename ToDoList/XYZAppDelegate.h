@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
-#import "XYZDataAccess.h"
+#import "DataAccess.h"
 
 @interface XYZAppDelegate : UIResponder <UIApplicationDelegate>
 

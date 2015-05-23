@@ -7,7 +7,7 @@
 //
 
 #import "XYZListItemTableViewCell.h"
-#import "XYZDataAccess.h"
+#import "DataAccess.h"
 
 @implementation XYZListItemTableViewCell
 
@@ -76,9 +76,7 @@
 {
     self.item.order = self.item.order;
     self.item.itemName = textField.text;
-    //[XYZDataAccess updateToDoListItem2:self.item];
 }
-
 
 
 @end
