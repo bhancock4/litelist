@@ -10,13 +10,16 @@
 #import "ToDoItem.h"
 #import "XYZListItemTableViewCell.h"
 #import "FPPopoverController.h"
+#import <iAd/iAd.h>
 
-@interface XYZToDoListViewController : UITableViewController<UIAlertViewDelegate>
+@interface XYZToDoListViewController : UITableViewController<UIAlertViewDelegate, ADBannerViewDelegate>
 
 - (NSIndexPath*)getCellIndexFromGesture:(UIGestureRecognizer *) g;
 - (void)selectedColorTableRow:(int) colorTableRow;
 - (ToDoItem *) addListItem:(id)sender;
 - (IBAction)addButtonClicked:(id)sender;
+- (IBAction)ClearItems:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
 @property NSMutableArray* toDoItems;
 @property NSIndexPath* swipeRIndex;

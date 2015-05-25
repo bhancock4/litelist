@@ -14,7 +14,7 @@
 #import "XYZUtilities.h"
 
 @implementation XYZToDoListViewController
-
+ADBannerView* bannerView;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -49,11 +49,37 @@
     
     self.tableView.editing = YES;  //edit mode allows reordering
     self.tableView.allowsSelectionDuringEditing = YES;  //still allow cell selection
+
+    //bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    //[self.view addSubview:bannerView];
+    
+    bannerView = [ADBannerView new];
+    self.tableView.tableFooterView = bannerView;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    NSLog(@"didFailToReceiveAdWithError");
+}
+
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    NSLog(@"bannerViewDidLoadAd");
+}
+
+- (void)bannerViewWillLoadAd:(ADBannerView *)banner
+{
+    NSLog(@"bannerViewWillLoadAd");
+}
+
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    NSLog(@"bannerViewActionDidFinish");
 }
 
 //allow reordering (editing in general)
@@ -96,9 +122,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"XYZListItemTableViewCell";
+   static NSString *CellIdentifier = @"XYZListItemTableViewCell";
     XYZListItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+   
     if(indexPath.row < [self.toDoItems count])
     {
         // Configure the cell
@@ -305,6 +331,62 @@
     for(ToDoItem* toDoItem in self.toDoItems)
     {
         [toDoItem saveEntity];
+    }
+}
+
+- (IBAction)ClearItems:(id)sender
+{
+    UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Remove which items?"
+                                                    message:@""
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"All", @"Green", @"Red", @"Yellow", @"Blue", nil];
+    
+    [alert show];
+}
+
+//handle result of user interaction with delete confirm dialog
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(buttonIndex != [alertView cancelButtonIndex])
+    {   //if we are clearing all items
+        if(buttonIndex == 1)
+        {
+            for(int i = (int)self.toDoItems.count - 1; i >= 0; i--)
+            {
+                ToDoItem* toDoItem = [self.toDoItems objectAtIndex:i];
+                [ToDoItem deleteEntity:toDoItem];
+                [self.toDoItems removeObjectAtIndex:i];
+            }
+        }
+        else
+        {
+            for(int i = (int)self.toDoItems.count - 1; i >= 0; i--)
+            {
+                if(((ToDoItem *)[self.toDoItems objectAtIndex:i]).status + 1 == buttonIndex)
+                {
+                    ToDoItem* toDoItem = [self.toDoItems objectAtIndex:i];
+                    [ToDoItem deleteEntity:toDoItem];
+                    [self.toDoItems removeObjectAtIndex:i];
+                }
+            }
+            //now some elements have been removed so we need to reset the orders on the collection...
+            //we'll sort the elements into an array using the existing order and then just reset from 0
+            NSSortDescriptor *sortDescriptor;
+            sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"order"
+                                                             ascending:YES];
+            NSArray *sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+            NSArray *sortedArray;
+            sortedArray = [self.toDoItems sortedArrayUsingDescriptors:sortDescriptors];
+            for(int i = 0; i < self.toDoItems.count; i++)
+            {
+                ToDoItem* toDoItem = ((ToDoItem *)sortedArray[i]);
+                toDoItem.order = i;
+                [toDoItem saveEntity];
+                //((ToDoItem *)sortedArray[i]).order = i;
+            }
+        }
+        [self.tableView reloadData];
     }
 }
 

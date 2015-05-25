@@ -21,8 +21,6 @@
 		0D6051AA18A7523F00D96FAA /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D6051A918A7523F00D96FAA /* XCTest.framework */; };
 		0D6051AB18A7523F00D96FAA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60519018A7523F00D96FAA /* Foundation.framework */; };
 		0D6051AC18A7523F00D96FAA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60519418A7523F00D96FAA /* UIKit.framework */; };
-		0D6051B418A7523F00D96FAA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0D6051B218A7523F00D96FAA /* InfoPlist.strings */; };
-		0D6051B618A7523F00D96FAA /* ToDoListTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6051B518A7523F00D96FAA /* ToDoListTests.m */; };
 		0D6051C018A752BA00D96FAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D6051BF18A752BA00D96FAA /* Main.storyboard */; };
 		0D6051CC18A7578800D96FAA /* XYZToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6051CB18A7578800D96FAA /* XYZToDoListViewController.m */; };
 		0D6051D218A7642D00D96FAA /* XYZCompletedItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6051D118A7642D00D96FAA /* XYZCompletedItemsViewController.m */; };
@@ -35,6 +33,7 @@
 		0DAAA4C51AEB4FF2000A51D5 /* XYZListItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DAAA4C31AEB4FF2000A51D5 /* XYZListItemTableViewCell.m */; };
 		0DAAA4C61AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DAAA4C41AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib */; };
 		0DAAA4C81AEB50D1000A51D5 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 0DAAA4C71AEB50D1000A51D5 /* PodFile */; };
+		0DC03FBB1B12EBEE00BA69FE /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC03FBA1B12EBEE00BA69FE /* iAd.framework */; };
 		AAF6DBF2DB59B01AE4FFB565 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 906D92C30153D8DB3B1D4B86 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -71,9 +70,6 @@
 		0D6051A218A7523F00D96FAA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0D6051A818A7523F00D96FAA /* ToDoListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D6051A918A7523F00D96FAA /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		0D6051B118A7523F00D96FAA /* ToDoListTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ToDoListTests-Info.plist"; sourceTree = "<group>"; };
-		0D6051B318A7523F00D96FAA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0D6051B518A7523F00D96FAA /* ToDoListTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ToDoListTests.m; sourceTree = "<group>"; };
 		0D6051BF18A752BA00D96FAA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0D6051CA18A7578800D96FAA /* XYZToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZToDoListViewController.h; sourceTree = "<group>"; };
 		0D6051CB18A7578800D96FAA /* XYZToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZToDoListViewController.m; sourceTree = "<group>"; };
@@ -93,6 +89,7 @@
 		0DAAA4C31AEB4FF2000A51D5 /* XYZListItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZListItemTableViewCell.m; sourceTree = "<group>"; };
 		0DAAA4C41AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XYZListItemTableViewCell.xib; sourceTree = "<group>"; };
 		0DAAA4C71AEB50D1000A51D5 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
+		0DC03FBA1B12EBEE00BA69FE /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		4B40C8F901AEBE406BD2744E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8C216901D84AEAFFFCC3761A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		906D92C30153D8DB3B1D4B86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DC03FBB1B12EBEE00BA69FE /* iAd.framework in Frameworks */,
 				0D671B1418B08697000B3BE5 /* CoreData.framework in Frameworks */,
 				0D60519318A7523F00D96FAA /* CoreGraphics.framework in Frameworks */,
 				0D60519518A7523F00D96FAA /* UIKit.framework in Frameworks */,
@@ -127,12 +125,8 @@
 		0D60518418A7523F00D96FAA = {
 			isa = PBXGroup;
 			children = (
-				0D62AFAF1B06FF2900158B9A /* ToDoItem.h */,
-				0D62AFB01B06FF2900158B9A /* ToDoItem.m */,
-				0D62AFAC1B06FB7F00158B9A /* BaseEntity.h */,
-				0D62AFAD1B06FB7F00158B9A /* BaseEntity.m */,
-				0D62AFA91B06FA5300158B9A /* DataAccess.h */,
-				0D62AFAA1B06FA5300158B9A /* DataAccess.m */,
+				0DC03FBD1B135E1900BA69FE /* Controller */,
+				0DC03FBC1B135DFB00BA69FE /* Model */,
 				0DAAA4C71AEB50D1000A51D5 /* PodFile */,
 				0DAAA4C21AEB4FF2000A51D5 /* XYZListItemTableViewCell.h */,
 				0DAAA4C31AEB4FF2000A51D5 /* XYZListItemTableViewCell.m */,
@@ -140,15 +134,8 @@
 				0D62636619CD6A45001518F2 /* XYZUtilities.h */,
 				0D62636719CD6A45001518F2 /* XYZUtilities.m */,
 				0D62636319CD68A0001518F2 /* FPPopover */,
-				0D3CE26319CBCCF900081F16 /* XYZColorPickerViewController.h */,
-				0D3CE26419CBCCF900081F16 /* XYZColorPickerViewController.m */,
-				0D6051CA18A7578800D96FAA /* XYZToDoListViewController.h */,
-				0D6051CB18A7578800D96FAA /* XYZToDoListViewController.m */,
-				0D6051D018A7642D00D96FAA /* XYZCompletedItemsViewController.h */,
-				0D6051D118A7642D00D96FAA /* XYZCompletedItemsViewController.m */,
 				0D6051BF18A752BA00D96FAA /* Main.storyboard */,
 				0D60519618A7523F00D96FAA /* ToDoList */,
-				0D6051AF18A7523F00D96FAA /* ToDoListTests */,
 				0D60518F18A7523F00D96FAA /* Frameworks */,
 				0D60518E18A7523F00D96FAA /* Products */,
 				4680AFBEC0F2736A3BE50F8D /* Pods */,
@@ -167,6 +154,7 @@
 		0D60518F18A7523F00D96FAA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0DC03FBA1B12EBEE00BA69FE /* iAd.framework */,
 				0D671B1318B08697000B3BE5 /* CoreData.framework */,
 				0D60519018A7523F00D96FAA /* Foundation.framework */,
 				0D60519218A7523F00D96FAA /* CoreGraphics.framework */,
@@ -200,24 +188,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0D6051AF18A7523F00D96FAA /* ToDoListTests */ = {
-			isa = PBXGroup;
-			children = (
-				0D6051B518A7523F00D96FAA /* ToDoListTests.m */,
-				0D6051B018A7523F00D96FAA /* Supporting Files */,
-			);
-			path = ToDoListTests;
-			sourceTree = "<group>";
-		};
-		0D6051B018A7523F00D96FAA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				0D6051B118A7523F00D96FAA /* ToDoListTests-Info.plist */,
-				0D6051B218A7523F00D96FAA /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		0D62636319CD68A0001518F2 /* FPPopover */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,6 +200,32 @@
 				0D252FD019CA790D00316990 /* FPPopoverController.h */,
 			);
 			name = FPPopover;
+			sourceTree = "<group>";
+		};
+		0DC03FBC1B135DFB00BA69FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0D62AFAF1B06FF2900158B9A /* ToDoItem.h */,
+				0D62AFB01B06FF2900158B9A /* ToDoItem.m */,
+				0D62AFAC1B06FB7F00158B9A /* BaseEntity.h */,
+				0D62AFAD1B06FB7F00158B9A /* BaseEntity.m */,
+				0D62AFA91B06FA5300158B9A /* DataAccess.h */,
+				0D62AFAA1B06FA5300158B9A /* DataAccess.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		0DC03FBD1B135E1900BA69FE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0D3CE26319CBCCF900081F16 /* XYZColorPickerViewController.h */,
+				0D3CE26419CBCCF900081F16 /* XYZColorPickerViewController.m */,
+				0D6051CA18A7578800D96FAA /* XYZToDoListViewController.h */,
+				0D6051CB18A7578800D96FAA /* XYZToDoListViewController.m */,
+				0D6051D018A7642D00D96FAA /* XYZCompletedItemsViewController.h */,
+				0D6051D118A7642D00D96FAA /* XYZCompletedItemsViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 		4680AFBEC0F2736A3BE50F8D /* Pods */ = {
@@ -334,7 +330,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D6051B418A7523F00D96FAA /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +394,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D6051B618A7523F00D96FAA /* ToDoListTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,14 +412,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				0D60519A18A7523F00D96FAA /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		0D6051B218A7523F00D96FAA /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0D6051B318A7523F00D96FAA /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
