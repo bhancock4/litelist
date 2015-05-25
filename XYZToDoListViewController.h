@@ -11,6 +11,7 @@
 #import "XYZListItemTableViewCell.h"
 #import "FPPopoverController.h"
 #import <iAd/iAd.h>
+#import "MyNavigationBar.h"
 
 @interface XYZToDoListViewController : UITableViewController<UIAlertViewDelegate, ADBannerViewDelegate>
 

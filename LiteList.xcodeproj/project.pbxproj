@@ -34,6 +34,7 @@
 		0DAAA4C61AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0DAAA4C41AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib */; };
 		0DAAA4C81AEB50D1000A51D5 /* PodFile in Resources */ = {isa = PBXBuildFile; fileRef = 0DAAA4C71AEB50D1000A51D5 /* PodFile */; };
 		0DC03FBB1B12EBEE00BA69FE /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC03FBA1B12EBEE00BA69FE /* iAd.framework */; };
+		0DC03FC01B13690D00BA69FE /* MyNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DC03FBF1B13690D00BA69FE /* MyNavigationBar.m */; };
 		AAF6DBF2DB59B01AE4FFB565 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 906D92C30153D8DB3B1D4B86 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -90,6 +91,8 @@
 		0DAAA4C41AEB4FF2000A51D5 /* XYZListItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XYZListItemTableViewCell.xib; sourceTree = "<group>"; };
 		0DAAA4C71AEB50D1000A51D5 /* PodFile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PodFile; sourceTree = "<group>"; };
 		0DC03FBA1B12EBEE00BA69FE /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		0DC03FBE1B13690D00BA69FE /* MyNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNavigationBar.h; sourceTree = "<group>"; };
+		0DC03FBF1B13690D00BA69FE /* MyNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNavigationBar.m; sourceTree = "<group>"; };
 		4B40C8F901AEBE406BD2744E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		8C216901D84AEAFFFCC3761A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		906D92C30153D8DB3B1D4B86 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +128,8 @@
 		0D60518418A7523F00D96FAA = {
 			isa = PBXGroup;
 			children = (
+				0DC03FBE1B13690D00BA69FE /* MyNavigationBar.h */,
+				0DC03FBF1B13690D00BA69FE /* MyNavigationBar.m */,
 				0DC03FBD1B135E1900BA69FE /* Controller */,
 				0DC03FBC1B135DFB00BA69FE /* Model */,
 				0DAAA4C71AEB50D1000A51D5 /* PodFile */,
@@ -382,6 +387,7 @@
 				0D62AFAE1B06FB7F00158B9A /* BaseEntity.m in Sources */,
 				0D62636819CD6A45001518F2 /* XYZUtilities.m in Sources */,
 				0D252FD519CA7A1700316990 /* FPPopoverView.m in Sources */,
+				0DC03FC01B13690D00BA69FE /* MyNavigationBar.m in Sources */,
 				0D60519D18A7523F00D96FAA /* main.m in Sources */,
 				0D6051D218A7642D00D96FAA /* XYZCompletedItemsViewController.m in Sources */,
 				0D62AFB11B06FF2900158B9A /* ToDoItem.m in Sources */,

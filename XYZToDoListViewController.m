@@ -50,9 +50,6 @@ ADBannerView* bannerView;
     self.tableView.editing = YES;  //edit mode allows reordering
     self.tableView.allowsSelectionDuringEditing = YES;  //still allow cell selection
 
-    //bannerView = [[ADBannerView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    //[self.view addSubview:bannerView];
-    
     bannerView = [ADBannerView new];
     self.tableView.tableFooterView = bannerView;
 }
