@@ -37,6 +37,10 @@ ADBannerView* bannerView;
     self.toDoItems = [NSMutableArray arrayWithArray:[ToDoItem getToDoListItemByCompleted:NO]];
     
     [self.tableView reloadData];
+    //set state of single-select switch based on last selection
+    [self.toggleSingleSelect setOn:[[NSUserDefaults standardUserDefaults] boolForKey:@"singleSelectOn"]];
+    //make background of single-select switch the sam as the green in the app
+    self.toggleSingleSelect.onTintColor = [UIColor colorWithRed: 123.0f/255.0f green:238.0f/255.0f blue:156.0f/255.0f alpha:1];
 }
 
 - (void)viewDidLoad
@@ -50,8 +54,11 @@ ADBannerView* bannerView;
     self.tableView.editing = YES;  //edit mode allows reordering
     self.tableView.allowsSelectionDuringEditing = YES;  //still allow cell selection
 
-    bannerView = [ADBannerView new];
-    self.tableView.tableFooterView = bannerView;
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"removeAds"])
+    {
+        bannerView = [ADBannerView new];
+        self.tableView.tableFooterView = bannerView;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,12 +141,6 @@ ADBannerView* bannerView;
         cell.listItemTextField.text = toDoItem.itemName;
         //cell.textLabel.text = toDoItem.itemName;
         cell.backgroundColor = [XYZUtilities getCellColorFromStatus:toDoItem.status];
-
-        //add a right-swipe gesture to move to completed
-        UISwipeGestureRecognizer* swipeR;
-        swipeR = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(cellWasSwipedRight: )];
-        swipeR.direction = UISwipeGestureRecognizerDirectionRight;
-        [cell addGestureRecognizer:swipeR];
     
         //add a long press gesture to pick status
         UILongPressGestureRecognizer* longPress;
@@ -191,24 +192,6 @@ ADBannerView* bannerView;
     return imageView;
 }
 
-- (void)cellWasSwipedRight:(UIGestureRecognizer *)g
-{
-    NSIndexPath* cellIndex = [self getCellIndexFromGesture: g];
-    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:cellIndex];
-    
-    //if (cell.backgroundColor != [UIColor whiteColor])
-    if(cell.alpha >= 0.99) //hack to determine if cell is being dragged
-    {
-        [self.tableView deselectRowAtIndexPath:cellIndex animated:NO];
-        ToDoItem * tappedItem = [self.toDoItems objectAtIndex:cellIndex.row];
-        tappedItem.completed = [NSNumber numberWithBool:YES];
-        tappedItem.completedDate = [NSDate date];
-        [tappedItem saveEntity];
-        [self.toDoItems removeObjectAtIndex:cellIndex.row];
-        [self.tableView deleteRowsAtIndexPaths:@[cellIndex] withRowAnimation:UITableViewRowAnimationLeft];
-    }
-}
-
 - (void)cellWasLongPressed:(UILongPressGestureRecognizer *) g
 {
     if (g.state == UIGestureRecognizerStateBegan)
@@ -216,21 +199,35 @@ ADBannerView* bannerView;
         NSIndexPath* cellIndex = [self getCellIndexFromGesture: g];
         self.longPressIndex = cellIndex;
         UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:cellIndex];
-
-        //the view controller you want to present as popover
-        XYZColorPickerViewController* controller = [[XYZColorPickerViewController alloc] init];
-        controller.delegate = self;
         
-        //our popover
-        self.colorPickerPopover = [[FPPopoverController alloc] initWithViewController:controller];
-        self.colorPickerPopover.border = NO;
-        
-        int width = [cell systemLayoutSizeFittingSize: UILayoutFittingExpandedSize].width * 0.75;
-        int height = [cell systemLayoutSizeFittingSize: UILayoutFittingCompressedSize].height * 6 - 5;
-        self.colorPickerPopover.contentSize = CGSizeMake(width, height);
-        
-        //the popover will be presented from the cell
-        [self.colorPickerPopover presentPopoverFromView:cell];
+        //if we have single-select on then every long press will toggle between green and white
+        //other colors will initially toggle to white
+        if(self.toggleSingleSelect.isOn)
+        {
+            UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:self.longPressIndex];
+            ToDoItem * item = [self.toDoItems objectAtIndex:self.longPressIndex.row];
+            int status = item.status == 0 ? 1 : 0;
+            cell.backgroundColor = [XYZUtilities getCellColorFromStatus:status];
+            item.status = status;
+            [item saveEntity];
+        }
+        else
+        {
+            //the view controller you want to present as popover
+            XYZColorPickerViewController* controller = [[XYZColorPickerViewController alloc] init];
+            controller.delegate = self;
+            
+            //our popover
+            self.colorPickerPopover = [[FPPopoverController alloc] initWithViewController:controller];
+            self.colorPickerPopover.border = NO;
+            
+            int width = [cell systemLayoutSizeFittingSize: UILayoutFittingExpandedSize].width * 0.75;
+            int height = [cell systemLayoutSizeFittingSize: UILayoutFittingCompressedSize].height * 6 - 5;
+            self.colorPickerPopover.contentSize = CGSizeMake(width, height);
+            
+            //the popover will be presented from the cell
+            [self.colorPickerPopover presentPopoverFromView:cell];
+        }
     }
 }
 
@@ -340,6 +337,12 @@ ADBannerView* bannerView;
                                           otherButtonTitles:@"All", @"Green", @"Red", @"Yellow", @"Blue", nil];
     
     [alert show];
+}
+
+- (IBAction)singleSelectToggled:(id)sender
+{
+    [[NSUserDefaults standardUserDefaults] setBool:self.toggleSingleSelect.isOn forKey:@"singleSelectOn"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 //handle result of user interaction with delete confirm dialog

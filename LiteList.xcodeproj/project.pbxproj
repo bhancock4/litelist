@@ -23,7 +23,6 @@
 		0D6051AC18A7523F00D96FAA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D60519418A7523F00D96FAA /* UIKit.framework */; };
 		0D6051C018A752BA00D96FAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D6051BF18A752BA00D96FAA /* Main.storyboard */; };
 		0D6051CC18A7578800D96FAA /* XYZToDoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6051CB18A7578800D96FAA /* XYZToDoListViewController.m */; };
-		0D6051D218A7642D00D96FAA /* XYZCompletedItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D6051D118A7642D00D96FAA /* XYZCompletedItemsViewController.m */; };
 		0D62636819CD6A45001518F2 /* XYZUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62636719CD6A45001518F2 /* XYZUtilities.m */; };
 		0D62AFAB1B06FA5300158B9A /* DataAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AFAA1B06FA5300158B9A /* DataAccess.m */; };
 		0D62AFAE1B06FB7F00158B9A /* BaseEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AFAD1B06FB7F00158B9A /* BaseEntity.m */; };
@@ -74,8 +73,6 @@
 		0D6051BF18A752BA00D96FAA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0D6051CA18A7578800D96FAA /* XYZToDoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZToDoListViewController.h; sourceTree = "<group>"; };
 		0D6051CB18A7578800D96FAA /* XYZToDoListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZToDoListViewController.m; sourceTree = "<group>"; };
-		0D6051D018A7642D00D96FAA /* XYZCompletedItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZCompletedItemsViewController.h; sourceTree = "<group>"; };
-		0D6051D118A7642D00D96FAA /* XYZCompletedItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZCompletedItemsViewController.m; sourceTree = "<group>"; };
 		0D62636619CD6A45001518F2 /* XYZUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XYZUtilities.h; sourceTree = "<group>"; };
 		0D62636719CD6A45001518F2 /* XYZUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XYZUtilities.m; sourceTree = "<group>"; };
 		0D62AFA91B06FA5300158B9A /* DataAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataAccess.h; sourceTree = "<group>"; };
@@ -227,8 +224,6 @@
 				0D3CE26419CBCCF900081F16 /* XYZColorPickerViewController.m */,
 				0D6051CA18A7578800D96FAA /* XYZToDoListViewController.h */,
 				0D6051CB18A7578800D96FAA /* XYZToDoListViewController.m */,
-				0D6051D018A7642D00D96FAA /* XYZCompletedItemsViewController.h */,
-				0D6051D118A7642D00D96FAA /* XYZCompletedItemsViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -389,7 +384,6 @@
 				0D252FD519CA7A1700316990 /* FPPopoverView.m in Sources */,
 				0DC03FC01B13690D00BA69FE /* MyNavigationBar.m in Sources */,
 				0D60519D18A7523F00D96FAA /* main.m in Sources */,
-				0D6051D218A7642D00D96FAA /* XYZCompletedItemsViewController.m in Sources */,
 				0D62AFB11B06FF2900158B9A /* ToDoItem.m in Sources */,
 				0D6051CC18A7578800D96FAA /* XYZToDoListViewController.m in Sources */,
 				0D671B1A18B08C46000B3BE5 /* ToDoListModel.xcdatamodeld in Sources */,

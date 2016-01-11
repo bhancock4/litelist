@@ -20,8 +20,10 @@
 - (ToDoItem *) addListItem:(id)sender;
 - (IBAction)addButtonClicked:(id)sender;
 - (IBAction)ClearItems:(id)sender;
+- (IBAction)singleSelectToggled:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addButton;
+@property (weak, nonatomic) IBOutlet UISwitch *toggleSingleSelect;
 @property NSMutableArray* toDoItems;
 @property NSIndexPath* swipeRIndex;
 @property NSIndexPath* longPressIndex;

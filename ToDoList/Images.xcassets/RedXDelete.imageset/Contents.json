@@ -2,16 +2,8 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "canvas1.png",
       "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "RedXDelete@2x.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
     }
   ],
   "info" : {

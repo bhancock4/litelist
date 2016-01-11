@@ -76,6 +76,11 @@
 {
     self.item.order = self.item.order;
     self.item.itemName = textField.text;
+    if([textField.text isEqualToString:@"REMOVE_ADS_PERMANENT"])
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"removeAds"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 
